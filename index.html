@@ -8,14 +8,15 @@
     <title>Tizen TV Web IDE - Tizen TV - Tizen TV basic Application</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <script src="js/main.js"></script>
+    <script language="javascript" type="text/javascript" src="js/keyTizen.js"></script>
+    <script language="javascript" type="text/javascript" src="js/controls.js"></script>
 </head>
 
 <body>
 	
 	  <body>
     
-	
+	<h1 id="videoTitle">A DATE WITH MARKIPLIER</h1>
  	
     <div id="Screen">
 	
@@ -37,9 +38,10 @@
 		  var player;
 		  function onYouTubePlayerAPIReady() {
 		    player = new YT.Player('ytplayer', {
-		      height: '360',
-		      width: '640',
-		      videoId: 'huie2_3Pekg',
+		      height: '640',
+		      width: '1080',
+		      playerVars: {autoplay:1, controls:0, disablekb:0, enablejsapi:1, fs:0},
+		      videoId: 'yyU_1JD2wuA',
 		          events: {
 			     'onReady': onPlayerReady,
 			  }
