@@ -10,51 +10,15 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <script language="javascript" type="text/javascript" src="js/keyTizen.js"></script>
     <script language="javascript" type="text/javascript" src="js/controls.js"></script>
+    <script language="javascript" type="text/javascript" src="js/youtube.js"></script>
 </head>
 
 <body>
-	
-	  <body>
-    
+	<div id = "data"></div>    
 	<h1 id="videoTitle">A DATE WITH MARKIPLIER</h1>
  	
-    <div id="Screen">
-	
-	    <!--  <iframe id="ytplayer" type="text/html" width="640" height="360"
-  			src="https://www.youtube.com/embed/huie2_3Pekg?autoplay=1"
-  			frameborder="0"/>-->
-  			
+    <div id="Screen">  			
   		<div id="ytplayer"></div>
-
-		<script>
-		  // Load the IFrame Player API code asynchronously.
-		  var tag = document.createElement('script');
-		  tag.src = "https://www.youtube.com/player_api";
-		  var firstScriptTag = document.getElementsByTagName('script')[0];
-		  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-		
-		  // Replace the 'ytplayer' element with an <iframe> and
-		  // YouTube player after the API code downloads.
-		  var player;
-		  function onYouTubePlayerAPIReady() {
-		    player = new YT.Player('ytplayer', {
-		      height: '640',
-		      width: '1080',
-		      playerVars: {autoplay:1, controls:0, disablekb:0, enablejsapi:1, fs:0},
-		      videoId: 'yyU_1JD2wuA',
-		          events: {
-			     'onReady': onPlayerReady,
-			  }
-		    });
-		  }
-		  
-		  // 4. The API will call this function when the video player is ready.
-     	  function onPlayerReady(event) {
-          	event.target.playVideo();
-          }
-		  
-		</script>
-    					
     </div>
     <div id="option1" class="option-container">
     </div>
