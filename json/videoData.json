@@ -5,7 +5,7 @@
       "Title": "A date with Markiplier",
       "Left": "Pay",
       "Right": "NoPay",
-      "Url": "https://www.youtube.com/watch?v=yyU_1JD2wuA&t=4s",
+      "Id": "yyU_1JD2wuA",
       "Continue": 1
     },
     {
@@ -13,7 +13,7 @@
       "Title": "Pay",
       "Left": "Horror",
       "Right": "Romance",
-      "Url": "https://www.youtube.com/watch?v=D5CXycD8gnc",
+      "Id": "D5CXycD8gnc",
       "Continue": 1
     },
     {
@@ -21,7 +21,7 @@
       "Title": "Don't Pay",
       "Left": "Attack",
       "Right": "NoAttack",
-      "Url": "https://www.youtube.com/watch?v=23jTMFsrWdg",
+      "Id": "23jTMFsrWdg",
       "Continue": 1
     },
     {
@@ -29,7 +29,7 @@
       "Title": "Horror",
       "Left": "Freedom",
       "Right": "Relax",
-      "Url": "https://www.youtube.com/watch?v=q8eg2DypRC8",
+      "Id": "q8eg2DypRC8",
       "Continue": 1
     },
     {
@@ -37,7 +37,7 @@
       "Title": "Freedom",
       "Left": "Left",
       "Right": "Right",
-      "Url": "https://www.youtube.com/watch?v=5L40rXqHsSk",
+      "Id": "5L40rXqHsSk",
       "Continue": 1
     },
     {
@@ -45,7 +45,7 @@
       "Title": "Left",
       "Left": "none",
       "Right": "none",
-      "Url": "https://www.youtube.com/watch?v=veNHrGg4Gks",
+      "Id": "veNHrGg4Gks",
       "Continue": 0
     },
     {
@@ -53,7 +53,7 @@
       "Title": "Right",
       "Left": "none",
       "Right": "none",
-      "Url": "https://www.youtube.com/watch?v=-cYt1cav9f0",
+      "Id": "-cYt1cav9f0",
       "Continue": 0
     },
     {
@@ -61,7 +61,7 @@
       "Title": "Relax",
       "Left": "none",
       "Right": "none",
-      "Url": "https://www.youtube.com/watch?v=n2faoFa3Bps",
+      "Id": "n2faoFa3Bps",
       "Continue": 0
     },
     {
@@ -69,7 +69,7 @@
       "Title": "Romance",
       "Left": "Horror",
       "Right": "Leave",
-      "Url": "https://www.youtube.com/watch?v=Utvtf8rCY4g",
+      "Id": "Utvtf8rCY4g",
       "Continue": 1
     },
     {
@@ -77,7 +77,7 @@
       "Title": "Leave",
       "Left": "Yes",
       "Right": "No",
-      "Url": "https://www.youtube.com/watch?v=Utvtf8rCY4g",
+      "Id": "Utvtf8rCY4g",
       "Continue": 1
     },
     {
@@ -85,7 +85,7 @@
       "Title": "Yes",
       "Left": "none",
       "Right": "none",
-      "Url": "https://www.youtube.com/watch?v=H6tlXqFI-EA",
+      "Id": "H6tlXqFI-EA",
       "Continue": 0
     },
     {
@@ -93,7 +93,7 @@
       "Title": "No",
       "Left": "none",
       "Right": "none",
-      "Url": "https://www.youtube.com/watch?v=RE14kkYVu5I",
+      "Id": "RE14kkYVu5I",
       "Continue": 0
     },
     {
@@ -101,7 +101,7 @@
       "Title": "Attack",
       "Left": "Road",
       "Right": "Shiny",
-      "Url": "https://www.youtube.com/watch?v=vO0wz9THGq0",
+      "Id": "vO0wz9THGq0",
       "Continue": 1
     },
     {
@@ -109,7 +109,7 @@
       "Title": "Road",
       "Left": "Tuna",
       "Right": "PBJ",
-      "Url": "https://www.youtube.com/watch?v=o4-2iNTxu6E",
+      "Id": "o4-2iNTxu6E",
       "Continue": 1
     },
     {
@@ -117,7 +117,7 @@
       "Title": "Tuna",
       "Left": "none",
       "Right": "none",
-      "Url": "https://www.youtube.com/watch?v=a6C9jh9kB9Q",
+      "Id": "a6C9jh9kB9Q",
       "Continue": 0
     },
     {
@@ -125,7 +125,7 @@
       "Title": "PBJ",
       "Left": "none",
       "Right": "none",
-      "Url": "https://www.youtube.com/watch?v=lcrCkm2ED8M",
+      "Id": "lcrCkm2ED8M",
       "Continue": 0
     },
     {
@@ -133,7 +133,7 @@
       "Title": "Shiny",
       "Left": "none",
       "Right": "none",
-      "Url": "https://www.youtube.com/watch?v=30sVvojkvqw",
+      "Id": "30sVvojkvqw",
       "Continue": 0
     },
     {
@@ -141,7 +141,7 @@
       "Title": "Don't Attack",
       "Left": "Pick",
       "Right": "Dig",
-      "Url": "https://www.youtube.com/watch?v=ahh3I6jP2sA",
+      "Id": "ahh3I6jP2sA",
       "Continue": 1
     },
     {
@@ -149,7 +149,7 @@
       "Title": "Dig a hole",
       "Left": "none",
       "Right": "none",
-      "Url": "https://www.youtube.com/watch?v=Jl9XIOZJ_pI",
+      "Id": "Jl9XIOZJ_pI",
       "Continue": 0
     },
     {
@@ -157,7 +157,7 @@
       "Title": "Pick Lock",
       "Left": "Split",
       "Right": "Stay",
-      "Url": "https://www.youtube.com/watch?v=yoHamTR5n1A",
+      "Id": "yoHamTR5n1A",
       "Continue": 1
     },
     {
@@ -165,7 +165,7 @@
       "Title": "Split",
       "Left": "none",
       "Right": "none",
-      "Url": "https://www.youtube.com/watch?v=yoHamTR5n1A",
+      "Id": "yoHamTR5n1A",
       "Continue": 0
     },
     {
@@ -173,7 +173,7 @@
       "Title": "Stay Together",
       "Left": "Exit",
       "Right": "More",
-      "Url": "https://www.youtube.com/watch?v=n-OUMryuYis",
+      "Id": "n-OUMryuYis",
       "Continue": 1
     },
     {
@@ -181,7 +181,7 @@
       "Title": "Exit",
       "Left": "Split",
       "Right": "Stay",
-      "Url": "https://www.youtube.com/watch?v=BvdtC0sMHlc",
+      "Id": "BvdtC0sMHlc",
       "Continue": 1
     },
     {
@@ -189,7 +189,7 @@
       "Title": "More",
       "Left": "none",
       "Right": "none",
-      "Url": "https://www.youtube.com/watch?v=2URDTFdgEO8",
+      "Id": "2URDTFdgEO8",
       "Continue": 0
     }
   ]
