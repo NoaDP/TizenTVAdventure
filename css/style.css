@@ -22,6 +22,17 @@ body {
   min-height: 50%;
 }
 
+#videoTitle{
+
+	color: white;
+	text-align: center;
+	font-family: cursive; 
+	font-size: 80px; 
+	font-style: normal; 
+	font-variant: normal; 
+	font-weight: 700; 
+	line-height: 26.4px; 
+}
 .option-container {
 	position:absolute;
 	height: 240px;
@@ -39,6 +50,10 @@ body {
 
 #option2{
 	right:10%;
+}
+
+#ytplayer{
+	left:300px;
 }
 
 .logo-container {
