@@ -1,4 +1,5 @@
-// Load the IFrame Player API code asynchronously.
+
+/*// Load the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/player_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -7,6 +8,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 // Replace the 'ytplayer' element with an <iframe> and
 // YouTube player after the API code downloads.
 var player;
+
 function onYouTubePlayerAPIReady() {
 	player = new YT.Player('ytplayer', {
     height: '640',
@@ -18,15 +20,17 @@ function onYouTubePlayerAPIReady() {
     	'onReady': onPlayerReady,
     }
 });
-		  }
+		 
 		  
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
 	event.target.playVideo();
 }
+ }*/
 
 function readJason(){
-    var url = "https://raw.githubusercontent.com/Dualsix/json/master/videoData.json";
+	console.log("entra");
+    var url = "https://raw.githubusercontent.com/NoaDP/TizenTVAdventure/master/json/videoData.json";
 
     var xmlhttp = new XMLHttpRequest();
 
@@ -47,4 +51,16 @@ function didResponse(response){
     var jsonArray = JSON.parse(response);
     var videos = JSON.stringify(jsonArray);
     localStorage.setItem('data', videos);
+}
+
+function readFirst(videos) {
+	   
+    for (i = 1; i <= videos.datos.length; i++) {
+        //"https://github.com/Dualsix/json/raw/master/img/" + videos.datos[i-1].ImgUrl;
+        if(videos.datos[i-1].Tag.localeCompare("Start") == 0){
+        		document.getElementById("videoTitle").innerHTML = videos.datos[i-1].Title;
+        		console.log(videos.datos[i-1].Title);
+        }
+       
+    }
 }
