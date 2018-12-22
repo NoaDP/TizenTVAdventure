@@ -18,7 +18,7 @@
 	
 	  <body>
     
-	<h1 id="videoTitle">A DATE WITH MARKIPLIER</h1>
+	<h1 id="videoTitle">--</h1>
  	
     <div id="Screen">
 	
@@ -28,39 +28,17 @@
   			
   		<div id="ytplayer"></div>
 
-		<script>
-		  // Load the IFrame Player API code asynchronously.
-		  var tag = document.createElement('script');
-		  tag.src = "https://www.youtube.com/player_api";
-		  var firstScriptTag = document.getElementsByTagName('script')[0];
-		  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 		
-		  // Replace the 'ytplayer' element with an <iframe> and
-		  // YouTube player after the API code downloads.
-		  var player;
-		  function onYouTubePlayerAPIReady() {
-		    player = new YT.Player('ytplayer', {
-		      height: '640',
-		      width: '1080',
-		      playerVars: {autoplay:1, controls:0, disablekb:0, enablejsapi:1},
-		      videoId: 'yyU_1JD2wuA',
-		          events: {
-			     'onReady': onPlayerReady,
-			  }
-		    });
-		  }
-		  
-		  // 4. The API will call this function when the video player is ready.
-     	  function onPlayerReady(event) {
-          	event.target.playVideo();
-          }
-		  
-		</script>
-    					
     </div>
     <div id="option1" class="option-container">
+    		<div id="ytplayer2"></div>
+    		<h2 id="titleL" class="subtitle">--</h2>
     </div>
+   
     <div id="option2" class="option-container">
+    		<div id="ytplayer3"></div>
+    		    <h2 id="titleR" class="subtitle">--</h2>
+    		
     </div>
 </body>
 </html>
