@@ -1,5 +1,11 @@
 var Main = {};
-
+var videos;
+var selected = null;
+var unselected = null;
+var isright = false;
+var isleft = false;
+var tag;
+var paused = false;
 //called when application was loaded
 Main.onLoad = function () {
 	console.log("Main.onLoad()");
@@ -11,7 +17,7 @@ Main.onLoad = function () {
 	Main.handleKeyDownEvents();
 	
 	readJason();
-	var videos = JSON.parse(localStorage.getItem("data"));
+	videos = JSON.parse(localStorage.getItem("data"));
     readFirst(videos);
 	
 }
@@ -38,49 +44,51 @@ Main.handleKeyDownEvents = function () {
 
 	// add eventListener for keydown
     document.addEventListener('keydown', function(e) {
-    	    	
+    	    
     	switch(e.keyCode){
     	case tvKey.LEFT: //LEFT arrow
-        	console.log("LEFT");
-    		break;
-    	case tvKey.UP: //UP arrow
-    		console.log("UP");
+    		selected = document.getElementById("option1");
+    		selected.style.borderColor = "yellow";
+    		unselected = document.getElementById("option2");
+    		unselected.style.borderColor = "red";
+    		isleft = true;
+    		isright = false;
     		break;
     	case tvKey.RIGHT: //RIGHT arrow
-    		console.log("RIGHT");
-    		break;
-    	case tvKey.DOWN: //DOWN arrow
-    		console.log("DOWN");
+    		selected = document.getElementById("option2");
+    		selected.style.borderColor = "yellow";
+    		unselected = document.getElementById("option1");
+    		unselected.style.borderColor = "red";
+    		isright = true;
+    		isleft = false;
     		break;
     	case tvKey.ENTER: //OK button
-    		console.log("OK");
-    		AVPlayer.setDisplayArea(0, 0, 1920, 1080);
-    		break;
-    	case tvKey.RETURN: //RETURN button
-    		console.log("RETURN");
-    		AVPlayer.setDisplayArea(0, 0, 960, 540);
+    		selected.style.borderWidth = "30px";
+    		selected.style.borderColor = "white";
+    		setTimeout(function(){ selected.style.borderWidth = "thick";
+    		selected.style.borderColor = "yellow"; }, 200);
+ 
+    	    if (isleft && !isright){
+    	    		tag = returnTagL();
+    	    }else{
+    	    		tag=0;
+    	    }
+    	    
+    	    if (!isleft && isright){
+	    		tag = returnTagR();
+	    }
+    	    
+    		findNext(videos, tag);
+    		selected.style.borderColor = "red"; 
     		break;
     	case tvKey.PLAYPAUSE: // PLAYPAUSE button
-    		console.log("PLAYPAUSE");
-    		if (AVPlayer.state == AVPlayer.STATES.PLAYING) {
-    			AVPlayer.pause();
-    		} else {
-    			AVPlayer.play();
-    		}    		
-    		break;
-    	case tvKey.PLAY: // PLAY button
-    		console.log("PLAY");
-    		AVPlayer.play();
-    		break;
-    	case tvKey.PAUSE: // PAUSE button
-    		console.log("PAUSE");
-    		AVPlayer.pause();
-    		break;
-    	default:
-    		console.log("Key code : " + e.keyCode);
+    		console.log("playpause");
+    		paused = playpause(paused);
+    		
     		break;
     	}
     });
+
 }
 
 // binding some events
