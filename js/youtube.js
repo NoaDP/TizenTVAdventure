@@ -88,7 +88,8 @@ function didResponse(response){
 }
 
 function readFirst(videos) {
-	   
+	var id_right;
+	var id_left;
     for (i = 1; i <= videos.datos.length; i++) {
         //"https://github.com/Dualsix/json/raw/master/img/" + videos.datos[i-1].ImgUrl;
         if(videos.datos[i-1].Tag.localeCompare("Start") == 0){
@@ -98,19 +99,30 @@ function readFirst(videos) {
         		player.loadVideoById(id);
         		document.getElementById("videoTitle").innerHTML = videos.datos[i-1].Title;
         }
+
         if(videos.datos[i-1].Tag.localeCompare(tag_right) == 0){
     			document.getElementById("titleR").innerHTML = videos.datos[i-1].Title;
+    			id_right = videos.datos[i-1].Id;
+
+    			
         } 
         if(videos.datos[i-1].Tag.localeCompare(tag_left) == 0){
     			document.getElementById("titleL").innerHTML = videos.datos[i-1].Title;
-        } 
+    			id_left = videos.datos[i-1].Id;
+
+    			
+        }
     }
     
     setTimeout(function(){ document.getElementById("option1").style.visibility="visible";
-    document.getElementById("option2").style.visibility="visible"; }, 50000);
+    document.getElementById("option2").style.visibility="visible";
+    pleft.cueVideoById(id_left); pright.cueVideoById(id_right);
+    pright.playVideo(); pleft.playVideo();}, 50000);
 }
 
 function findNext(videos, tag){
+	var id_right;
+	var id_left;
 	document.getElementById("option1").style.visibility="hidden";
 	document.getElementById("option2").style.visibility="hidden";
 	for (i = 1; i <= videos.datos.length; i++) {
@@ -118,6 +130,7 @@ function findNext(videos, tag){
         		document.getElementById("videoTitle").innerHTML = videos.datos[i-1].Title;
         		tag_right = videos.datos[i-1].Right;
         		tag_left = videos.datos[i-1].Left;
+        		
         		player.loadVideoById(videos.datos[i-1].Id);
         }
        
@@ -125,18 +138,22 @@ function findNext(videos, tag){
 	for (i = 1; i <= videos.datos.length; i++) {
         if(videos.datos[i-1].Tag.localeCompare(tag_right) == 0){
         		document.getElementById("titleR").innerHTML = videos.datos[i-1].Title;
-        		pright.loadVideoById(videos.datos[i-1].Id);
+        		id_right = videos.datos[i-1].Id;
+        		
         } 
     }
 	for (i = 1; i <= videos.datos.length; i++) {
         if(videos.datos[i-1].Tag.localeCompare(tag_left) == 0){
         		document.getElementById("titleL").innerHTML = videos.datos[i-1].Title;
-        		pleft.loadVideoById(videos.datos[i-1].Id);
+        		id_left = videos.datos[i-1].Id;
+        		
         } 
     }
 	
 	setTimeout(function(){ document.getElementById("option1").style.visibility="visible";
-    document.getElementById("option2").style.visibility="visible"; }, 50000);
+    document.getElementById("option2").style.visibility="visible"; 
+    pright.cueVideoById(id_right); pleft.cueVideoById(id_left); 
+    pright.playVideo(); pleft.playVideo();}, 50000);
 }
 
 function returnTagL (){
