@@ -29,7 +29,7 @@ function onYouTubePlayerAPIReady() {
 	pleft = new YT.Player('ytplayer2', {
 	    height: '240px',
 	    width: '320',
-	    playerVars: {controls:0, disablekb:0, enablejsapi:1, fs:0, rel:0},
+	    playerVars: {controls:0, disablekb:0, enablejsapi:1, fs:0, rel:0,mute:1},
 	    videoId: '-',
 	    events:{
 	    	'onReady': onPlayerReady,
@@ -39,7 +39,7 @@ function onYouTubePlayerAPIReady() {
 	pright = new YT.Player('ytplayer3', {
 	    height: '240',
 	    width: '320',
-	    playerVars: { controls:0, disablekb:0, enablejsapi:1, fs:0, rel:0},
+	    playerVars: { controls:0, disablekb:0, enablejsapi:1, fs:0, rel:0,mute:1},
 	    videoId: '-',
 	    events:{
 	    	'onReady': onPlayerReady,
