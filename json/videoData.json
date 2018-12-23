@@ -6,7 +6,8 @@
       "Left": "Pay",
       "Right": "NoPay",
       "Id": "yyU_1JD2wuA",
-      "Continue": 1
+      "Continue": 1,
+      "End":"none"
     },
     {
       "Tag": "Pay",
@@ -14,7 +15,8 @@
       "Left": "Horror",
       "Right": "Romance",
       "Id": "D5CXycD8gnc",
-      "Continue": 1
+      "Continue": 1,
+      "End":"none"
     },
     {
       "Tag": "NoPay",
@@ -22,7 +24,8 @@
       "Left": "Attack",
       "Right": "NoAttack",
       "Id": "23jTMFsrWdg",
-      "Continue": 1
+      "Continue": 1,
+      "End":"none"
     },
     {
       "Tag": "Horror",
@@ -30,7 +33,8 @@
       "Left": "Freedom",
       "Right": "Relax",
       "Id": "q8eg2DypRC8",
-      "Continue": 1
+      "Continue": 1,
+      "End":"none"
     },
     {
       "Tag": "Freedom",
@@ -38,7 +42,8 @@
       "Left": "Left",
       "Right": "Right",
       "Id": "5L40rXqHsSk",
-      "Continue": 1
+      "Continue": 1,
+      "End":"none"
     },
     {
       "Tag": "Left",
@@ -46,7 +51,8 @@
       "Left": "none",
       "Right": "none",
       "Id": "veNHrGg4Gks",
-      "Continue": 0
+      "Continue": 0,
+      "End":"1/10"
     },
     {
       "Tag": "Right",
@@ -54,7 +60,8 @@
       "Left": "none",
       "Right": "none",
       "Id": "-cYt1cav9f0",
-      "Continue": 0
+      "Continue": 0,
+      "End":"2/10"
     },
     {
       "Tag": "Relax",
@@ -62,7 +69,9 @@
       "Left": "none",
       "Right": "none",
       "Id": "n2faoFa3Bps",
-      "Continue": 0
+      "Continue": 0,
+      "End":"3/10"
+      
     },
     {
       "Tag": "Romance",
@@ -70,7 +79,8 @@
       "Left": "Horror",
       "Right": "Leave",
       "Id": "Utvtf8rCY4g",
-      "Continue": 1
+      "Continue": 1,
+      "End":"none"
     },
     {
       "Tag": "Leave",
@@ -78,7 +88,8 @@
       "Left": "Yes",
       "Right": "No",
       "Id": "D0D8p9iaUEo",
-      "Continue": 1
+      "Continue": 1,
+      "End":"none"
     },
     {
       "Tag": "Yes",
@@ -86,7 +97,8 @@
       "Left": "none",
       "Right": "none",
       "Id": "H6tlXqFI-EA",
-      "Continue": 0
+      "Continue": 0,
+      "End":"none"
     },
     {
       "Tag": "No",
@@ -94,7 +106,8 @@
       "Left": "none",
       "Right": "none",
       "Id": "RE14kkYVu5I",
-      "Continue": 0
+      "Continue": 0,
+      "End":"4/10"
     },
     {
       "Tag": "Attack",
@@ -102,7 +115,8 @@
       "Left": "Road",
       "Right": "Shiny",
       "Id": "vO0wz9THGq0",
-      "Continue": 1
+      "Continue": 1,
+      "End":"none"
     },
     {
       "Tag": "Road",
@@ -110,7 +124,8 @@
       "Left": "Tuna",
       "Right": "PBJ",
       "Id": "o4-2iNTxu6E",
-      "Continue": 1
+      "Continue": 1,
+      "End":"none"
     },
     {
       "Tag": "Tuna",
@@ -118,7 +133,8 @@
       "Left": "none",
       "Right": "none",
       "Id": "a6C9jh9kB9Q",
-      "Continue": 0
+      "Continue": 0,
+      "End":"5/10"
     },
     {
       "Tag": "PBJ",
@@ -126,7 +142,8 @@
       "Left": "none",
       "Right": "none",
       "Id": "lcrCkm2ED8M",
-      "Continue": 0
+      "Continue": 0,
+      "End":"6/10"
     },
     {
       "Tag": "Shiny",
@@ -134,7 +151,8 @@
       "Left": "none",
       "Right": "none",
       "Id": "30sVvojkvqw",
-      "Continue": 0
+      "Continue": 0,
+      "End":"7/10"
     },
     {
       "Tag": "NoAttack",
@@ -142,7 +160,8 @@
       "Left": "Pick",
       "Right": "Dig",
       "Id": "ahh3I6jP2sA",
-      "Continue": 1
+      "Continue": 1,
+      "End":"none"
     },
     {
       "Tag": "Dig",
@@ -150,7 +169,8 @@
       "Left": "none",
       "Right": "none",
       "Id": "Jl9XIOZJ_pI",
-      "Continue": 0
+      "Continue": 0,
+      "End":"8/10"
     },
     {
       "Tag": "Pick",
@@ -158,7 +178,8 @@
       "Left": "Split",
       "Right": "Stay",
       "Id": "yoHamTR5n1A",
-      "Continue": 1
+      "Continue": 1,
+      "End":"none"
     },
     {
       "Tag": "Split",
@@ -166,7 +187,8 @@
       "Left": "none",
       "Right": "none",
       "Id": "yoHamTR5n1A",
-      "Continue": 0
+      "Continue": 0,
+      "End":"9/10"
     },
     {
       "Tag": "Stay",
@@ -174,7 +196,8 @@
       "Left": "Exit",
       "Right": "More",
       "Id": "n-OUMryuYis",
-      "Continue": 1
+      "Continue": 1,
+      "End":"none"
     },
     {
       "Tag": "Exit",
@@ -182,7 +205,8 @@
       "Left": "Split",
       "Right": "Stay",
       "Id": "BvdtC0sMHlc",
-      "Continue": 1
+      "Continue": 1,
+      "End":"none"
     },
     {
       "Tag": "More",
@@ -190,7 +214,8 @@
       "Left": "none",
       "Right": "none",
       "Id": "2URDTFdgEO8",
-      "Continue": 0
+      "Continue": 0,
+      "End":"10/10"
     }
   ]
 }
