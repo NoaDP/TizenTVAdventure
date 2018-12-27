@@ -65,8 +65,36 @@ body {
 
 #ytplayer{
 	margin-left:12%;
-	margin-bottom:10%;
+	margin-bottom:20%;
 }
+
+#endMessage{
+	visibility:hidden;
+	width:1080px;
+	height:480px;
+	left:20%;
+	top:10%;
+	position:absolute;
+	text-align:center;
+	background-color: rgba(130,16,16,0.5);
+}
+
+#buttonsPanel{
+	display:inline-block;
+}
+
+#restart, #quit{
+	padding:3%;
+	text-align: center;
+	font-family: cursive; 
+	font-size: 50px; 
+	font-style: normal; 
+	font-variant: normal; 
+	font-weight: 700; 
+	line-height: 26.4px; 
+	background-color:gray;
+}
+
 
 .logo-container {
     position: absolute;
