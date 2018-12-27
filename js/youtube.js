@@ -7,7 +7,10 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var tag_right;
 var tag_left;
 var id;
-
+var end;
+var cont;
+var id_right = null;
+var id_left = null;
 		
 // Replace the 'ytplayer' element with an <iframe> and
 // YouTube player after the API code downloads.
@@ -29,7 +32,7 @@ function onYouTubePlayerAPIReady() {
 	pleft = new YT.Player('ytplayer2', {
 	    height: '240px',
 	    width: '320',
-	    playerVars: {controls:0, disablekb:0, enablejsapi:1, fs:0, rel:0,mute:1},
+	    playerVars: {controls:0, disablekb:0, enablejsapi:1, fs:0, rel:0, mute:1},
 	    videoId: '-',
 	    events:{
 	    	'onReady': onPlayerReady,
@@ -39,7 +42,7 @@ function onYouTubePlayerAPIReady() {
 	pright = new YT.Player('ytplayer3', {
 	    height: '240',
 	    width: '320',
-	    playerVars: { controls:0, disablekb:0, enablejsapi:1, fs:0, rel:0,mute:1},
+	    playerVars: { controls:0, disablekb:0, enablejsapi:1, fs:0, rel:0, mute:1},
 	    videoId: '-',
 	    events:{
 	    	'onReady': onPlayerReady,
@@ -88,8 +91,8 @@ function didResponse(response){
 }
 
 function readFirst(videos) {
-	var id_right;
-	var id_left;
+	document.getElementById("option1").style.visibility="hidden";
+    document.getElementById("option2").style.visibility="hidden"; 
     for (i = 1; i <= videos.datos.length; i++) {
         //"https://github.com/Dualsix/json/raw/master/img/" + videos.datos[i-1].ImgUrl;
         if(videos.datos[i-1].Tag.localeCompare("Start") == 0){
@@ -98,31 +101,27 @@ function readFirst(videos) {
         		id = videos.datos[i-1].Id;
         		player.loadVideoById(id);
         		document.getElementById("videoTitle").innerHTML = videos.datos[i-1].Title;
-        }
+        		cont = videos.datos[i-1].Continue;
 
+        }
         if(videos.datos[i-1].Tag.localeCompare(tag_right) == 0){
     			document.getElementById("titleR").innerHTML = videos.datos[i-1].Title;
     			id_right = videos.datos[i-1].Id;
-
-    			
         } 
         if(videos.datos[i-1].Tag.localeCompare(tag_left) == 0){
     			document.getElementById("titleL").innerHTML = videos.datos[i-1].Title;
     			id_left = videos.datos[i-1].Id;
-
-    			
-        }
+        } 
     }
     
     setTimeout(function(){ document.getElementById("option1").style.visibility="visible";
-    document.getElementById("option2").style.visibility="visible";
-    pleft.cueVideoById(id_left); pright.cueVideoById(id_right);
+    document.getElementById("option2").style.visibility="visible"; 
+    pright.cueVideoById(id_right); pleft.cueVideoById(id_left); 
     pright.playVideo(); pleft.playVideo();}, 50000);
 }
 
 function findNext(videos, tag){
-	var id_right;
-	var id_left;
+	
 	document.getElementById("option1").style.visibility="hidden";
 	document.getElementById("option2").style.visibility="hidden";
 	for (i = 1; i <= videos.datos.length; i++) {
@@ -130,8 +129,10 @@ function findNext(videos, tag){
         		document.getElementById("videoTitle").innerHTML = videos.datos[i-1].Title;
         		tag_right = videos.datos[i-1].Right;
         		tag_left = videos.datos[i-1].Left;
-        		
+        		end = videos.datos[i-1].End;
         		player.loadVideoById(videos.datos[i-1].Id);
+        		cont = videos.datos[i-1].Continue;
+
         }
        
     }
@@ -150,11 +151,23 @@ function findNext(videos, tag){
         } 
     }
 	
-	setTimeout(function(){ document.getElementById("option1").style.visibility="visible";
-    document.getElementById("option2").style.visibility="visible"; 
-    pright.cueVideoById(id_right); pleft.cueVideoById(id_left); 
-    pright.playVideo(); pleft.playVideo();}, 50000);
+	
+	if (cont == 1){
+		setTimeout(function(){ document.getElementById("option1").style.visibility="visible";
+	    document.getElementById("option2").style.visibility="visible"; 
+	    pright.cueVideoById(id_right); pleft.cueVideoById(id_left); 
+	    pright.playVideo(); pleft.playVideo();}, 50000);
+	}
+	
+	if(cont == 0){
+		document.getElementById("option1").style.visibility="hidden"; 
+	    document.getElementById("option2").style.visibility="hidden";
+		document.getElementById("congrats").innerHTML = "Congratulations! You unlocked the end ".concat(end);
+		setTimeout(function(){ document.getElementById("endMessage").style.visibility="visible";
+	    }, 50000);
+	}
 }
+
 
 function returnTagL (){
 	return tag_left;
@@ -173,4 +186,9 @@ function playpause(){
 		player.pauseVideo();
 		return true;
 	}
+}
+
+function enableEnd (){
+   return cont;
+ 
 }
