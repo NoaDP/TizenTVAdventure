@@ -17,7 +17,7 @@ var id_left = null;
 var player;
 var pleft;
 var pright;
-
+//creamos el reproductor principal
 function onYouTubePlayerAPIReady() {
 	player = new YT.Player('ytplayer', {
     height: '900',
@@ -53,18 +53,18 @@ function onYouTubePlayerAPIReady() {
 
 var playerReady = false;
 var uno = true;
-
+//miramos si todo est listo para reproducir
 function onPlayerReady(event){
 	playerReady = true;
 }
-
+//cambia el estado de reproductor y carga el video
 function onPlayerStateChange(event){
 	if (playerReady == true && uno == true) {
 		player.loadVideoById(id);
 		uno = false;
 	}
 }
-
+//leemos el Json
 function readJason(){
 	console.log("entra");
     var url = "https://raw.githubusercontent.com/NoaDP/TizenTVAdventure/master/json/videoData.json";
@@ -83,13 +83,13 @@ function readJason(){
     xmlhttp.send(null);
 }
 
-
+//cargamos los datos del Json
 function didResponse(response){
     var jsonArray = JSON.parse(response);
     var videos = JSON.stringify(jsonArray);
     localStorage.setItem('data', videos);
 }
-
+//leemos el primer video
 function readFirst(videos) {
 	document.getElementById("option1").style.visibility="hidden";
     document.getElementById("option2").style.visibility="hidden"; 
@@ -119,7 +119,7 @@ function readFirst(videos) {
     pright.cueVideoById(id_right); pleft.cueVideoById(id_left); 
     pright.playVideo(); pleft.playVideo();}, 50000);
 }
-
+//leemos el siguiente viddeo
 function findNext(videos, tag){
 	
 	document.getElementById("option1").style.visibility="hidden";
@@ -168,15 +168,15 @@ function findNext(videos, tag){
 	}
 }
 
-
+//devuelve el tag del video izquierdo
 function returnTagL (){
 	return tag_left;
 }
-
+//devuelve el tag del video derecho
 function returnTagR (selected){
 	return tag_right;
 }
-
+//pone el video en pausa o play
 function playpause(){
 	if(paused){
 		player.playVideo();
@@ -187,7 +187,7 @@ function playpause(){
 		return true;
 	}
 }
-
+//dvuelve el contador
 function enableEnd (){
    return cont;
  
