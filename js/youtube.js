@@ -12,14 +12,13 @@ var cont;
 var id_right = null;
 var id_left = null;
 var id_ant = null;
-var inter;
-		
+var actualTag = null;		
 // Replace the 'ytplayer' element with an <iframe> and
 // YouTube player after the API code downloads.
 var player;
 var pleft;
 var pright;
-var primero = true;
+var inter;
 
 //creamos los reproductores
 //creamos el reproductor principal
@@ -104,6 +103,7 @@ function didResponse(response){
 function readFirst(videos) {
 	document.getElementById("option1").style.visibility="hidden";
     document.getElementById("option2").style.visibility="hidden"; 
+    actualTag = "Start";
     for (i = 1; i <= videos.datos.length; i++) {
         if(videos.datos[i-1].Tag.localeCompare("Start") == 0){
         		//nos guardamos la id del video y leemos los tags de las dos opciones
@@ -129,15 +129,16 @@ function readFirst(videos) {
     			id_left = videos.datos[i-1].Id;
         } 
     }
-    primero = true;
+    
     //indicamos un tiempo antes de que se muestren las opciones
     setInterval(preview, 1000);
 }
 
 //leemos el siguiente video seleccionado por el usuario
 function findNext(videos, tag){
-	clearInterval(inter);
 	//nos guardamos la misma informacion que la del primer video
+	clearInterval(inter);
+	actualTag = tag;
 	id_ant = id;
 	document.getElementById("option1").style.visibility="hidden";
 	document.getElementById("option2").style.visibility="hidden";
@@ -169,30 +170,24 @@ function findNext(videos, tag){
         		
         } 
     }
-	primero = true;
-	//si el video da opciones las mostramos tras 50 segundos
+	
+	//si el video muestra las opciones tras reproducirse el 70%
 	if (cont == 1){
 		inter = setInterval(preview, 1000);
 	}
 	
 	//si el video es final de ruta mostramos el mensaje final tras 50 segundos
 	if(cont == 0){
+		/*document.getElementById("option1").style.visibility="hidden"; 
+	    document.getElementById("option2").style.visibility="hidden";
+		document.getElementById("congrats").innerHTML = "Congratulations! You unlocked the end ".concat(end);
+		setTimeout(function(){ document.getElementById("endMessage").style.visibility="visible";
+	    }, 50000);*/
+		
 		document.getElementById("option1").style.visibility="hidden"; 
 	    document.getElementById("option2").style.visibility="hidden";
 		document.getElementById("congrats").innerHTML = "Congratulations! You unlocked the end ".concat(end);
 		inter = setInterval(endMessage, 1000);
-	}
-}
-
-function endMessage(){
-	progress = Math.round(player.getCurrentTime() / player.getDuration() * 100);
-	if(progress > 70 && primero == true){
-		document.getElementById("endMessage").style.visibility="visible";
-		primero = false;
-	}
-	if(progress <= 70){
-		document.getElementById("endMessage").style.visibility="hidden";
-	    primero = true;
 	}
 }
 
@@ -205,7 +200,7 @@ function returnTagR (selected){
 	return tag_right;
 }
 //pone el video en pausa o play
-function playpause(){
+function playpause(paused){
 	if(paused){
 		player.playVideo();
 		return false;
@@ -215,11 +210,32 @@ function playpause(){
 		return true;
 	}
 }
+
 //devuelve la informacion si es final de ruta o no
 function enableEnd (){
    return cont;
 }
 
+//devuelve el tag del video reproducido con anterioridad
+function TagAnterior (videos){
+	for (i = 1; i <= videos.datos.length; i++) {
+        if(videos.datos[i-1].Id.localeCompare(id_ant) == 0){
+        		return videos.datos[i-1].Tag;
+        }
+    }
+}
+
+function showInstructions(active){
+	if (active == true)return false;
+	if (active == false) return true;
+}
+
+
+function getActualTag(){
+	return actualTag;
+}
+
+//mostramos u ocultamos las opciones segun el tiempo de reproduccion del video
 function preview(){
 	 progress = Math.round(player.getCurrentTime() / player.getDuration() * 100);
 	if(progress > 70 && primero == true){
@@ -236,14 +252,19 @@ function preview(){
 	}
 }
 
-function TagAnterior (videos){
-	for (i = 1; i <= videos.datos.length; i++) {
-        if(videos.datos[i-1].Id.localeCompare(id_ant) == 0){
-        		return videos.datos[i-1].Tag;
-        }
-    }
+function endMessage(){
+	progress = Math.round(player.getCurrentTime() / player.getDuration() * 100);
+	if(progress > 70 && primero == true){
+		document.getElementById("endMessage").style.visibility="visible";
+		primero = false;
+	}
+	if(progress <= 70){
+		document.getElementById("endMessage").style.visibility="hidden";
+	    primero = true;
+	}
 }
 
+//adelantamos el video
 function forward(){
 	var currentTime = player.getCurrentTime();
 	if(currentTime < player.getDuration() - 10){
@@ -255,6 +276,7 @@ function forward(){
 	}
 }
 
+//retrocedemos o reseteamos el video
 function rewind(){
 	var currentTime = player.getCurrentTime();
 	if(currentTime > 10){
@@ -266,4 +288,3 @@ function rewind(){
 		player.playVideo();
 	}
 }
-

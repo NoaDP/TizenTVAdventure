@@ -9,6 +9,7 @@ var paused = false;
 var isrestart = false;
 var isquit = false;
 var tag_ant = false;
+var inst_act = false;
 
 //called when application was loaded
 Main.onLoad = function () {
@@ -130,40 +131,78 @@ Main.handleKeyDownEvents = function () {
      	    		readFirst(videos); 
      	    		document.getElementById("endMessage").style.visibility="hidden";
      	    } 
-     	    if (isquit && !isrestart){
+     	   if (isquit && !isrestart){
 	    		console.log("quit app");
 	    		document.getElementById("endMessage").style.visibility="hidden";
-     	   		}
+	    }
     		}
     		
     		selected.style.borderColor = "red"; 
     		break;
     		
-    	case tvKey.RETURN: //return button
+	case tvKey.RETURN: //return button
     		tag_ant = TagAnterior(videos);
     		findNext(videos, tag_ant);
     		break;
     		
-		case tvKey.YELLOW: //yellow button
-			console.log("yellow");
-			break;
+	case tvKey.RED: //red button
+		//recargamos el video
+		findNext(videos, getActualTag());
+	    break;
+	    
+	case tvKey.YELLOW: //yellow button
+		//mostramos u ocultamos las instrucciones al apretar el boton amarillo
+		var active = showInstructions(inst_act);
+		
+		if (active == true){
+			var aux = document.createElement("img");
+			aux.id = "instimg";
+			aux.src= "image/InstruccionesMenu.png";
+			aux.className ="temporal";
+			var d = document.getElementById("instructions");
+			d.appendChild(aux);
+			inst_act = true;
+		}	
+		
+		if (active == false){
+			var aux = document.getElementById("instimg");
+			aux.parentNode.removeChild(aux);
+			inst_act = false;
+		}
+		
+		break;
+		
+	case tvKey.GREEN: //green button
+		//reseteamos la aplicacion
+	    readFirst(videos);
+		break;
+	
+	case tvKey.PLAY: //play button
+		//ponemos en play el video
+	    playpause(true);
+		break;
+		
+	case tvKey.PAUSE: //pause button
+		//pausamos el video
+	    playpause(false);
+		break;
+	
+		//adelantamos 10 segundos el video
+	case tvKey.CH_UP:
+		forward();
+		break;
+		
+		//retrocedemos 10 segundos el video
+	case tvKey.CH_DOWN:	
+		rewind();
+		break;
 		
     	case tvKey.PLAYPAUSE: // PLAYPAUSE button
-    		console.log("playpause");
     		paused = playpause(paused);
     		
     		break;
-    		
-    	case tvKey.CH_UP:
-    		forward();
-    		break;
-    		
-    	case tvKey.CH_DOWN:	
-    		rewind();
-    		break;
     	}
     });
-    
 
 }
 
