@@ -11,12 +11,15 @@ var end;
 var cont;
 var id_right = null;
 var id_left = null;
+var id_ant = null;
 		
 // Replace the 'ytplayer' element with an <iframe> and
 // YouTube player after the API code downloads.
 var player;
 var pleft;
 var pright;
+
+//creamos los reproductores
 //creamos el reproductor principal
 function onYouTubePlayerAPIReady() {
 	player = new YT.Player('ytplayer', {
@@ -29,6 +32,7 @@ function onYouTubePlayerAPIReady() {
     	'onStateChange': onPlayerStateChange,
     }
 });
+	//creamos el reproductor de la opcion izquierda
 	pleft = new YT.Player('ytplayer2', {
 	    height: '240px',
 	    width: '320',
@@ -39,6 +43,7 @@ function onYouTubePlayerAPIReady() {
 	    	'onStateChange': onPlayerStateChange,
 	    }
 	});
+	//creamos el reproductor de la opcion derecha
 	pright = new YT.Player('ytplayer3', {
 	    height: '240',
 	    width: '320',
@@ -53,10 +58,12 @@ function onYouTubePlayerAPIReady() {
 
 var playerReady = false;
 var uno = true;
+
 //miramos si todo est listo para reproducir
 function onPlayerReady(event){
 	playerReady = true;
 }
+
 //cambia el estado de reproductor y carga el video
 function onPlayerStateChange(event){
 	if (playerReady == true && uno == true) {
@@ -64,6 +71,7 @@ function onPlayerStateChange(event){
 		uno = false;
 	}
 }
+
 //leemos el Json
 function readJason(){
 	console.log("entra");
@@ -89,39 +97,48 @@ function didResponse(response){
     var videos = JSON.stringify(jsonArray);
     localStorage.setItem('data', videos);
 }
-//leemos el primer video
+
+//leemos el primer video del json
 function readFirst(videos) {
 	document.getElementById("option1").style.visibility="hidden";
     document.getElementById("option2").style.visibility="hidden"; 
     for (i = 1; i <= videos.datos.length; i++) {
-        //"https://github.com/Dualsix/json/raw/master/img/" + videos.datos[i-1].ImgUrl;
         if(videos.datos[i-1].Tag.localeCompare("Start") == 0){
+        		//nos guardamos la id del video y leemos los tags de las dos opciones
         		tag_right = videos.datos[i-1].Right;
         		tag_left = videos.datos[i-1].Left;
         		id = videos.datos[i-1].Id;
+        		id_ant = id;
+        		//cargamos la url del video en el reproductor
         		player.loadVideoById(id);
+        		//cargamos el titulo del video
         		document.getElementById("videoTitle").innerHTML = videos.datos[i-1].Title;
         		cont = videos.datos[i-1].Continue;
 
         }
+        //nos guardamos la informacion del video de la derecha
         if(videos.datos[i-1].Tag.localeCompare(tag_right) == 0){
     			document.getElementById("titleR").innerHTML = videos.datos[i-1].Title;
     			id_right = videos.datos[i-1].Id;
         } 
+        //nos guardamos la informacion del video de la izquierda
         if(videos.datos[i-1].Tag.localeCompare(tag_left) == 0){
     			document.getElementById("titleL").innerHTML = videos.datos[i-1].Title;
     			id_left = videos.datos[i-1].Id;
         } 
     }
     
+    //indicamos un tiempo antes de que se muestren las opciones
     setTimeout(function(){ document.getElementById("option1").style.visibility="visible";
     document.getElementById("option2").style.visibility="visible"; 
     pright.cueVideoById(id_right); pleft.cueVideoById(id_left); 
     pright.playVideo(); pleft.playVideo();}, 50000);
 }
-//leemos el siguiente viddeo
+
+//leemos el siguiente video seleccionado por el usuario
 function findNext(videos, tag){
-	
+	//nos guardamos la misma informacion que la del primer video
+	id_ant = id;
 	document.getElementById("option1").style.visibility="hidden";
 	document.getElementById("option2").style.visibility="hidden";
 	for (i = 1; i <= videos.datos.length; i++) {
@@ -129,13 +146,15 @@ function findNext(videos, tag){
         		document.getElementById("videoTitle").innerHTML = videos.datos[i-1].Title;
         		tag_right = videos.datos[i-1].Right;
         		tag_left = videos.datos[i-1].Left;
+        		id = videos.datos[i-1].Id;
+        		//miramos si es final de ruta
         		end = videos.datos[i-1].End;
         		player.loadVideoById(videos.datos[i-1].Id);
         		cont = videos.datos[i-1].Continue;
-
         }
-       
     }
+	
+	//leemos la informacion de las opciones
 	for (i = 1; i <= videos.datos.length; i++) {
         if(videos.datos[i-1].Tag.localeCompare(tag_right) == 0){
         		document.getElementById("titleR").innerHTML = videos.datos[i-1].Title;
@@ -151,7 +170,7 @@ function findNext(videos, tag){
         } 
     }
 	
-	
+	//si el video da opciones las mostramos tras 50 segundos
 	if (cont == 1){
 		setTimeout(function(){ document.getElementById("option1").style.visibility="visible";
 	    document.getElementById("option2").style.visibility="visible"; 
@@ -159,6 +178,7 @@ function findNext(videos, tag){
 	    pright.playVideo(); pleft.playVideo();}, 50000);
 	}
 	
+	//si el video es final de ruta mostramos el mensaje final tras 50 segundos
 	if(cont == 0){
 		document.getElementById("option1").style.visibility="hidden"; 
 	    document.getElementById("option2").style.visibility="hidden";
@@ -187,8 +207,16 @@ function playpause(){
 		return true;
 	}
 }
-//dvuelve el contador
+//devuelve la informacion si es final de ruta o no
 function enableEnd (){
    return cont;
- 
+}
+
+
+function TagAnterior (videos){
+	for (i = 1; i <= videos.datos.length; i++) {
+        if(videos.datos[i-1].Id.localeCompare(id_ant) == 0){
+        		return videos.datos[i-1].Tag;
+        }
+    }
 }

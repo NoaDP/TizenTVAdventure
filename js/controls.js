@@ -8,9 +8,10 @@ var tag;
 var paused = false;
 var isrestart = false;
 var isquit = false;
+var tag_ant = false;
+
 //called when application was loaded
 Main.onLoad = function () {
-	console.log("Main.onLoad()");
 	
 	//enabling media keys
 	Main.enableMediaKeys();
@@ -18,9 +19,18 @@ Main.onLoad = function () {
 	// setup handler to key events
 	Main.handleKeyDownEvents();
 	
-	readJason();
-	videos = JSON.parse(localStorage.getItem("data"));
-    readFirst(videos);
+	setTimeout(function(){ 
+		var aux = document.getElementById("instimg");
+		aux.parentNode.removeChild(aux);
+    }, 5000);
+	
+	setTimeout(function(){ 
+		document.getElementById("ytplayer").style.visibility="visible"; 
+		readJason();
+		videos = JSON.parse(localStorage.getItem("data"));
+	    readFirst(videos);
+    }, 5005);
+	
 	
 }
 
@@ -52,14 +62,16 @@ Main.handleKeyDownEvents = function () {
     	case tvKey.LEFT: //LEFT arrow
     		console.log(enableEnd ());
 
+//si el usuario pulsa a la izquierda enfatiza la opcion izquierda
     		if (enableEnd () == 1){
 	    		selected = document.getElementById("option1");
 	    		selected.style.borderColor = "yellow";
 	    		unselected = document.getElementById("option2");
-	    		unselected.style.borderColor = "red";
+	    		unselected.style.borderColor = "black";
 	    		isleft = true;
 	    		isright = false;
     		}else{
+    			//si el usuario pulsa try again enfatiza la opcion
     			selected = document.getElementById("quit");
         		selected.style.background='gray';
     			selected = document.getElementById("restart");
@@ -71,15 +83,18 @@ Main.handleKeyDownEvents = function () {
     
     	case tvKey.RIGHT: //RIGHT arrow
     		console.log(enableEnd ());
+    		//si el usuario pulsa a la izquierda enfatiza la opcion derecha
 
     		if (enableEnd () == 1){
     			selected = document.getElementById("option2");
         		selected.style.borderColor = "yellow";
         		unselected = document.getElementById("option1");
-        		unselected.style.borderColor = "red";
+        		unselected.style.borderColor = "black";
         		isright = true;
         		isleft = false;
     		}else{
+    			//si el usuario pulsa quit enfatiza la opcion
+
     			selected = document.getElementById("restart");
         		selected.style.background='gray';
         		selected = document.getElementById("quit");
@@ -124,6 +139,15 @@ Main.handleKeyDownEvents = function () {
     		selected.style.borderColor = "red"; 
     		break;
     		
+	case tvKey.RETURN: //return button
+    		tag_ant = TagAnterior(videos);
+    		findNext(videos, tag_ant);
+    		break;
+    		
+	case tvKey.YELLOW: //yellow button
+		console.log("yellow");
+		break;
+		
     	case tvKey.PLAYPAUSE: // PLAYPAUSE button
     		console.log("playpause");
     		paused = playpause(paused);
