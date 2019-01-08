@@ -41,7 +41,7 @@ body {
     bottom:10%;
     background-color: lightblue;
     border-style:solid;
-    border-color: red;
+    border-color: black;
     border-width:5px;
 }
 
@@ -66,6 +66,7 @@ body {
 #ytplayer{
 	margin-left:12%;
 	margin-bottom:20%;
+	visibility:hidden;
 }
 
 #endMessage{
@@ -77,6 +78,15 @@ body {
 	position:absolute;
 	text-align:center;
 	background-color: rgba(130,16,16,0.5);
+}
+
+.temporal{
+	height:auto;
+	width:720px;
+	left:30%;
+	top:10%;
+	position:absolute;
+	text-align:center;
 }
 
 #buttonsPanel{
