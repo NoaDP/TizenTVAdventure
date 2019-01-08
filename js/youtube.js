@@ -12,6 +12,7 @@ var cont;
 var id_right = null;
 var id_left = null;
 var id_ant = null;
+var inter;
 		
 // Replace the 'ytplayer' element with an <iframe> and
 // YouTube player after the API code downloads.
@@ -135,6 +136,7 @@ function readFirst(videos) {
 
 //leemos el siguiente video seleccionado por el usuario
 function findNext(videos, tag){
+	clearInterval(inter);
 	//nos guardamos la misma informacion que la del primer video
 	id_ant = id;
 	document.getElementById("option1").style.visibility="hidden";
@@ -170,7 +172,7 @@ function findNext(videos, tag){
 	primero = true;
 	//si el video da opciones las mostramos tras 50 segundos
 	if (cont == 1){
-		setInterval(preview, 1000);
+		inter = setInterval(preview, 1000);
 	}
 	
 	//si el video es final de ruta mostramos el mensaje final tras 50 segundos
@@ -178,7 +180,7 @@ function findNext(videos, tag){
 		document.getElementById("option1").style.visibility="hidden"; 
 	    document.getElementById("option2").style.visibility="hidden";
 		document.getElementById("congrats").innerHTML = "Congratulations! You unlocked the end ".concat(end);
-		setInterval(endMessage, 1000);
+		inter = setInterval(endMessage, 1000);
 	}
 }
 
