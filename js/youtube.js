@@ -18,6 +18,7 @@ var id_ant = null;
 var player;
 var pleft;
 var pright;
+var primero = true;
 
 //creamos los reproductores
 //creamos el reproductor principal
@@ -127,12 +128,9 @@ function readFirst(videos) {
     			id_left = videos.datos[i-1].Id;
         } 
     }
-    
+    primero = true;
     //indicamos un tiempo antes de que se muestren las opciones
-    setTimeout(function(){ document.getElementById("option1").style.visibility="visible";
-    document.getElementById("option2").style.visibility="visible"; 
-    pright.cueVideoById(id_right); pleft.cueVideoById(id_left); 
-    pright.playVideo(); pleft.playVideo();}, 50000);
+    setInterval(preview, 1000);
 }
 
 //leemos el siguiente video seleccionado por el usuario
@@ -169,13 +167,10 @@ function findNext(videos, tag){
         		
         } 
     }
-	
+	primero = true;
 	//si el video da opciones las mostramos tras 50 segundos
 	if (cont == 1){
-		setTimeout(function(){ document.getElementById("option1").style.visibility="visible";
-	    document.getElementById("option2").style.visibility="visible"; 
-	    pright.cueVideoById(id_right); pleft.cueVideoById(id_left); 
-	    pright.playVideo(); pleft.playVideo();}, 50000);
+		setInterval(preview, 1000);
 	}
 	
 	//si el video es final de ruta mostramos el mensaje final tras 50 segundos
@@ -183,8 +178,19 @@ function findNext(videos, tag){
 		document.getElementById("option1").style.visibility="hidden"; 
 	    document.getElementById("option2").style.visibility="hidden";
 		document.getElementById("congrats").innerHTML = "Congratulations! You unlocked the end ".concat(end);
-		setTimeout(function(){ document.getElementById("endMessage").style.visibility="visible";
-	    }, 50000);
+		setInterval(endMessage, 1000);
+	}
+}
+
+function endMessage(){
+	progress = Math.round(player.getCurrentTime() / player.getDuration() * 100);
+	if(progress > 70 && primero == true){
+		document.getElementById("endMessage").style.visibility="visible";
+		primero = false;
+	}
+	if(progress <= 70){
+		document.getElementById("endMessage").style.visibility="hidden";
+	    primero = true;
 	}
 }
 
@@ -212,6 +218,21 @@ function enableEnd (){
    return cont;
 }
 
+function preview(){
+	 progress = Math.round(player.getCurrentTime() / player.getDuration() * 100);
+	if(progress > 70 && primero == true){
+		document.getElementById("option1").style.visibility="visible";
+	    document.getElementById("option2").style.visibility="visible"; 
+	    pright.cueVideoById(id_right); pleft.cueVideoById(id_left); 
+	    pright.playVideo(); pleft.playVideo();
+	    primero = false;
+	}
+	if(progress <= 70){
+		document.getElementById("option1").style.visibility="hidden";
+	    document.getElementById("option2").style.visibility="hidden"; 
+	    primero = true;
+	}
+}
 
 function TagAnterior (videos){
 	for (i = 1; i <= videos.datos.length; i++) {
@@ -220,3 +241,27 @@ function TagAnterior (videos){
         }
     }
 }
+
+function forward(){
+	var currentTime = player.getCurrentTime();
+	if(currentTime < player.getDuration() - 10){
+		player.seekTo(currentTime + 10, true);
+		player.playVideo();
+	}
+	else{
+		player.stopVideo();
+	}
+}
+
+function rewind(){
+	var currentTime = player.getCurrentTime();
+	if(currentTime > 10){
+		player.seekTo(currentTime - 10, true);
+		player.playVideo();
+	}
+	else{
+		player.stopVideo();
+		player.playVideo();
+	}
+}
+

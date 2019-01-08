@@ -130,31 +130,40 @@ Main.handleKeyDownEvents = function () {
      	    		readFirst(videos); 
      	    		document.getElementById("endMessage").style.visibility="hidden";
      	    } 
-     	   if (isquit && !isrestart){
+     	    if (isquit && !isrestart){
 	    		console.log("quit app");
 	    		document.getElementById("endMessage").style.visibility="hidden";
-	    }
+     	   		}
     		}
     		
     		selected.style.borderColor = "red"; 
     		break;
     		
-	case tvKey.RETURN: //return button
+    	case tvKey.RETURN: //return button
     		tag_ant = TagAnterior(videos);
     		findNext(videos, tag_ant);
     		break;
     		
-	case tvKey.YELLOW: //yellow button
-		console.log("yellow");
-		break;
+		case tvKey.YELLOW: //yellow button
+			console.log("yellow");
+			break;
 		
     	case tvKey.PLAYPAUSE: // PLAYPAUSE button
     		console.log("playpause");
     		paused = playpause(paused);
     		
     		break;
+    		
+    	case tvKey.CH_UP:
+    		forward();
+    		break;
+    		
+    	case tvKey.CH_DOWN:	
+    		rewind();
+    		break;
     	}
     });
+    
 
 }
 
