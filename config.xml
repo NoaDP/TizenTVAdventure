@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/Adventure" version="1.0.0" viewmodes="maximized">
+<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/Adventure" version="1.0.0" height="720" width="1280" viewmodes="maximized">
     <tizen:application id="D1rM8l2CgZ.Adventure" package="D1rM8l2CgZ" required_version="2.3"/>
+    <author>NoaDuran-CarlosMuntane</author>
     <content src="index.html"/>
+    <description>Simple aplication that allows the user to take decisions in order to fulfill a story. </description>
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <icon src="icon.png"/>
     <name>Adventure</name>

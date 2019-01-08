@@ -1,0 +1,13 @@
+Cuando la aplicacion se ponga en marcha, se reproducira automaticamente el primer video.
+Al cabo de un tiempo, se mostrarán las dos opciones que el usuario puede seleccionar.
+Botones:
+
+play/pause: pone en play o pausa el video que se está reproduciendo. 
+Enter: seleccionar opcion
+Izquierda: realza la opcion izquierda
+Derecha: resalta la opcion derecha
+Back: recarga el video anterior
+
+
+Al seleccionar alguna de las dos opciones, se leen los datos del archivo json y se cargan tanto la informacion del video como la de las dos
+siguientes opciones. 
